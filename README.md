@@ -75,3 +75,296 @@ O Sistema deve ter um botão para editar arquivo, onde após clicado ele será r
 
 # Diagrama UML (Back-End)
 ![08 04 2023_22 32 42_REC](https://user-images.githubusercontent.com/95968468/230752522-31c4e5db-849c-4945-ac5b-11ce21b96b4e.png)
+
+# Api / Contrato JSON 
+## EndPoints 
+## EndPoint User
+### Post/ Authentication 
+Esse endpoint é responsável por autenticação do usuário. 
+#### Parâmetros: 
+email: Email do usuário existente. 
+password: senha do usuário existente e referente ao e-mail  
+#### Respostas: 
+Ok! 200 
+
+Exemplo de resposta: 
+```
+{ 
+  token: “dsnaujifdbsdjfnidosfusdjfmdsjifhisdkfjsdnifksdjfbsdujfiodsnfisdkfisdhfisjtttttttthhshshshsshshh”  
+} 
+```
+### Get / Users 
+Esse endpoint é responsável por retornar todos os usuários que têm no sistema 
+#### Parâmetros: 
+name: name do usuário para procurar ele no banco de dados. 
+#### Resposta:  
+200! Ok 
+
+Exemplo de resposta: 
+```
+[ 
+  { 
+    Id: 1, 
+    name: “luiz”, 
+    email: ”luiz@gmail.com”, 
+    description: “empresa focada na área de tecnologia, com o objetivo programação aos iniciantes”, 
+    Is_company: “true” 
+  }, 
+  { 
+    Id: 2, 
+    name: “lucas”, 
+    email: ”lucas@gmail.com”, 
+    description: “empresa focada na área de tecnologia, com o objetivo programação aos iniciantes”, 
+    Is_company: “true” 
+  } 
+] 
+```
+### Get / User  
+Esse endpoint é responsável por retornar os dados do usuário a partir do id. 
+#### Parâmetros:  
+id: id do usuário para procurar ele no banco de dados. 
+#### Resposta:  
+200! Ok 
+
+Exemplo de resposta: 
+```
+{ 
+  Id: 1, 
+  name: “luiz”, 
+  email: ”luiz@gmail.com”, 
+  description: “empresa focada na área de tecnologia, com o objetivo programação aos iniciantes”, 
+  Is_company: ” true” 
+} 
+```
+### Post / User 
+Esse endpoint é responsável por criar um usuário no sistema. 
+####Parâmetros:
+name: nome do usuário ou da empresa. 
+email: E-mail do usuário ou da empresa. 
+password: Senha do usuário ou da empresa. 
+description: uma breve descrição do usuário ou da empresa. 
+Is_company: indicar se o usuário é uma empresa (true) ou não (false). 
+#### Resposta: 
+Created! 201 
+
+Exemplo de resposta:  
+```
+{ 
+  response: “user successfully saved” 
+} 
+```
+### Put/ User 
+Esse endpoint é responsável por atualizar os dados do usuário no sistema de banco de dados. 
+#### Parâmetros: 
+Id: identificado do usuário a ser atualizado. 
+name: nome do usuário ou empresa (opcional). 
+description:  breve descrição da empresa (opcional). 
+#### Resposta: 
+No content! 204 
+
+### Delete / User  
+Esse endpoint é responsável por deletar um user do sistema de banco de dados. 
+#### Parâmetros:
+Id: para identificar o usuário que será removido. 
+#### Resposta: 
+Ok! 200  
+
+Exemplo de resposta: 
+```
+{ 
+  response: “Sucessfully deleted user” 
+}  
+```
+### Get / Location/:id 
+Esse endpoint é responsável retorna os dados da localização da empresa com base no ID fornecido. 
+#### Parâmetros:  
+user_id: refere-se ao usuário que deseja usar essas informações de localização para si mesmo. 
+#### Resposta: 
+Ok! 200 
+
+Exemplo de resposta:
+```
+{ 
+
+  Id: 1, 
+  city: “cidade blue lock”, 
+  state: “Wano”, 
+  country: “Brasil”, 
+  user_id: 1 
+} 
+```
+### Post/ Location 
+Esse endpoint é responsável por enviar os dados da localização da empresa para poder salvar no banco de dados, mas o usuário só precisa preencher caso ele for uma empresa. 
+#### Parâmetros:  
+city: representa a cidade onde a empresa fica localizada. 
+state: representa o estado onde a empresa fica localizada. 
+user_id: refere-se ao usuário que deseja usar essas informações de localização para si mesmo. 
+#### Resposta:  
+Ok! 200 
+
+Exemplo de resposta:  
+```
+{ 
+  response: “data update successsfully” 
+} 
+```
+### Put / Location/:id 
+Esse endpoint por atualizar os da localização de uma empresa de acordo com o ID informado. 
+#### Parâmetros: 
+Id: Id da empresa cuja localização da empresa será atualizada. 
+city: cidade onde a empresa fica localizada (opcional). 
+state: estado onde a empresa fica localizada (opcional). 
+country: país onde a empresa fica localizada (opcional). 
+#### Resposta:
+Ok! 200
+
+Exemplo de resposta:
+```
+{
+  "successful user update"
+}
+```
+### Delete / Location/:id 
+Esse endpoint por deletar a localização da empresa com o id fornecido. 
+Parâmetros:  
+Id: para indicar a localização que o usuário deseja deletar. 
+#### Resposta: 
+Ok! 200 
+
+Exemplo de resposta: 
+```
+{ 
+  response:  ”successsfully deleted location” 
+}  
+```
+### Get / Publications  
+Esse endpoint por retornar toda a lista de publicações cadastradas no sistema. 
+#### Parâmetros:  
+Search: O usuário pode pesquisar por publicações relacionadas ao que deseja. 
+#### Resposta:  
+Ok! 200 
+
+Exemplo de resposta:  
+```
+[ 
+  { 
+    id: 1, 
+    title: “Exemple”, 
+    body”: “Empresas interessadas para pasceria com um processo que envolve mobilidade urbana chame por esse e-mail para discutir sobre o assunto.”, 
+    user_id: 1 
+  }, 
+  { 
+    id: 2, 
+    title: “exemple”, 
+    body: “exemple”, 
+    user_id: 2 
+  } 
+] 
+```
+### Post / Publicacation 
+Esse endpoint é responsável por criar uma publicação no sistema. 
+####Parâmetros: 
+title: título da publicação. 
+Body: descrição sobre o projeto que o usuário deseja trabalhar e o que ele quer que os patrocinadores façam. 
+user_id: refere-se ao usuário que deseja usar essas informações de localização para si mesmo. 
+#### Resposta: 
+Nenhum conteúdo! 204 
+
+### Put / Publication/:id 
+Esse endpoint é responsável por atualizar os dados da publicação. 
+#### Parâmetros: 
+Id: identificador da publicação a ser atualizada. 
+title: novo título da publicação (opcional). 
+body: nova descrição da publicação (opcional). 
+#### Resposta: 
+Ok! 200 
+
+Exemplo de resposta: 
+```
+{ 
+  response: “successfully update” 
+} 
+```
+### Delete / Publication/:id 
+Esse endpoint é reponsável por deletar uma publicação do sistema. 
+#### Parâmetros: 
+Id: identificador da publicação a ser excluída. 
+#### Resposta: 
+Ok! 200 
+
+Exemplo de resposta: 
+```
+{ 
+  response: “Sucessfully deleted publication” 
+} 
+```
+### Get / ChatResponse 
+Esse endpoint é responsável por retornar uma lista de todas as respostas para uma determinada publicação. 
+#### Parâmetros: 
+Nenhum. 
+Response: Para usuário entrar em contato com o dono da publicação ou interagir. 
+#### Resposta: 
+Ok! 200 
+
+Exemplo de resposta:  
+```
+[ 
+  { 
+    name: “luiz”, 
+    response: “Gostaria de ajudar, para isso entre em contato com meu E-mail:	xample@gmail.com”, 
+    user_id: 1, 
+    id_publication: 1 
+  } ,
+   { 
+    name: “lucas
+    response: “Gostaria de ajudar, para isso entre em contato com meu E-mail:	xample@gmail.com”, 
+    user_id: 2,
+    id_publication: 2
+  }
+] 
+```
+### Post / ChatResponse 
+Esse endpoint é responsável por criar uma resposta para uma determinada publicação. 
+#### Parâmetros: 
+response: “resposta referente a publicação”. 
+Id: referente à qual a resposta se refere. 
+Response: Digite sua resposta referente ao artigo que você leu. 
+user_id: refere-se ao usuário que deseja usar essas informações de localização para si mesmo. 
+#### Resposta: 
+Ok! 200 
+
+Exemplo de resposta:  
+```
+{ 
+  response: “answer successfully saved“ 
+} 
+```
+### Put / ChatResponse/:id 
+Esse endpoint é responsável por atualizar uma resposta existente. 
+#### Parâmetros:  
+Id: o Id referente a resposta. 
+body: nova resposta. 
+Response: Para trocar o texto de sua resposta. 
+#### Resposta: 
+Ok! 200 
+
+Exemplo de resposta: 
+```
+{ 
+  response: “answer successfully updated” 
+} 
+```
+### Delete / ChatResponse 
+Esse endpoint é responsável por deletar uma resposta existente. 
+#### Parâmetros:  
+Id: id da resposta a ser removida. 
+#### Responta: 
+
+Ok! 200
+
+Exemplo de resposta: 
+```
+{ 
+  response: “Sucessfully deleted publication” 
+} 
+```
