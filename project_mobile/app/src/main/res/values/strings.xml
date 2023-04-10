@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ProjetoFaculdade</string>
+    <string name="titulo_principal">Community Aid</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_senha">Senha</string>
+    <string name="txt_button_entrar">Entrar</string>
+    <string name="txt_esqueceu_a_senha">Esqueceu a senha?</string>
+    <string name="txt_nao_tem_conta"> <font color="#FF000000">Não tem conta?</font> <font color="#4E10DA">Crie sua conta agora!</font></string>
+
+</resources>
